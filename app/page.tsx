@@ -2,9 +2,10 @@ import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import { getTodos } from '@/lib/todos';
+import TodoStateOnlyApp from './components/TodoStateOnlyApp';
 
 export default async function TodoPage() {
-  const todos = await getTodos();
+  const initialTodos = await getTodos();
 
   return (
     <main className="min-h-screen p-8 bg-gray-100">
@@ -14,12 +15,8 @@ export default async function TodoPage() {
             Daftar Tugas (Todo List)
           </h1>
         </header>
-
-        {/* Form Komponen */}
-        <TodoForm />
-
-        {/* List Komponen yang membungkus Item */}
-        <TodoList todos={todos} />
+        {/*  Halaman Beranda  : Menggunakan State Murni (In-Memory) */}
+        <TodoStateOnlyApp initialTodos={initialTodos}/>
       </div>
     </main>
   );
